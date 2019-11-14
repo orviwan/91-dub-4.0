@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+<head>
+  <title>91 Dub v3.0 Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/spectrum.css">
+
+  <link rel="stylesheet" type="text/css" href="css/pebblesim.css">
+
+
+  
+  
+ 
+</head>
+<body>
+    <div class="container">
+
+    <h2>91 Dub v3.0</h2>
+      
+      <form id="configure-form" class="form-configure well" action="#" method="POST">
+        <h4>Blink</h4>
+        <p><small>The colon between the hours and minutes will blink every second.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="blink" id="blink1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="blink" id="blink2" value="0"> No
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="blink" id="blink3" value="2"> Double Rate
+          </label>
+        </div>
+        <hr />
+        <div style="display:none">
+          <h4>Junkie mode</h4>
+          <p><small>Alternate colour scheme, as requested by <a href="http://forums.getpebble.com/profile/295/CaffeineJunkie" target="_blank">@CaffeineJunkie</a>.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="invert" id="invert1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="invert" id="invert2" value="0"> No
+            </label>
+          </div>
+          <hr />
+        </div>
+        <h4>Bluetooth Vibe</h4>
+        <p><small>Vibrate on Bluetooth disconnect.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="bluetoothvibe" id="bluetoothvibe1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="bluetoothvibe" id="bluetoothvibe2" value="0"> No
+          </label>
+        </div>
+        <hr />
+        <h4>Hourly Vibe</h4>
+        <p><small>Vibrate on the hour.</small></p> 
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="hourlyvibe" id="hourlyvibe1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="hourlyvibe" id="hourlyvibe2" value="0"> No
+          </label>
+        </div>
+        <hr />
+        <div style="display:none">
+          <h4>Hide Branding</h4>
+          <p><small>Don't display 'Pebble Smartwatch' at the top of the watch face.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="branding_mask" id="branding_mask1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="branding_mask" id="branding_mask2" value="0"> No
+            </label>
+          </div>
+          <hr />
+        </div>
+        <div style="display:none">
+          <h4>Hide Battery Level</h4>
+          <p><small>Don't display the battery icon and percentage on the watch face.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="battery_hide" id="battery_hide1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="battery_hide" id="battery_hide2" value="0"> No
+            </label>
+          </div>
+          <hr />
+        </div>
+        <div style="display:none">
+          <h4>Show Seconds</h4>
+          <p><small>Reduce the size of the clock to display seconds.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="seconds" id="seconds1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="seconds" id="seconds2" value="0"> No
+            </label>
+          </div>
+          <hr />  
+        </div>
+
+
+<div id="platform">
+      <h3>Pebble Time</h3>
+<!-- Presets -->
+
+        <h4>Colour Theme Presets</h4>
+        <p><small>For Pebble Time only.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+            <select id="presets" class="form-control">
+              <option value="000,000,FFF,FFF,FFF,FFF,FFF">Default White</option>
+              <option value="000,005,0AF,AAA,AAA,AAA,AAA">Default Blue</option>
+              <option value="000,050,5F5,AAA,AAA,AAA,AAA">Default Green</option>
+              <option value="000,550000,FF00AA,AAA,AAA,AAA,AAA">Default Pink</option>
+              <option value="000,555500,FFFF00,AAA,AAA,AAA,AAA">Default Yellow</option>
+              <option value="000,550000,FF0000,AAA,AAA,AAA,AAA">Default Red</option>
+              <!-- bg, ts, t, d, am, hl, bi -->
+              <option value="000055,000055,aaaaaa,0055ff,0055ff,55aa55,ff0000">Solarized Dark by Cr4ck3r</option>
+            </select>
+        </div>
+        <hr />
+
+        <h4>Live Preview</h4>
+        <div id="pebblesim">
+            <div class="batterypercent">80%</div>
+            <div class="battery"><div class="fill"></div></div>
+            <div class="line"></div>
+            <div class="ampm">24H</div>
+            <div class="date">WED 22</div>
+            <div class="timeshadow">88:88</div>
+            <div class="time">22:45</div>
+            <div class="line line2"></div>
+        </div>
+        <hr />
+
+
+        <h4>Custom Colours</h4>
+        <p><small>For Pebble Time only.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+            <label><input name="bgcolor" id="bgcolor" class="picker">&nbsp;Background</label>&nbsp;
+
+            <label><input name="tcolor" id="tcolor" class="picker">&nbsp;Time</label>&nbsp;
+
+            <label><input name="tscolor" id="tscolor" class="picker">&nbsp;Time Shadow</label>&nbsp;
+        </div><br />
+        <div class="btn-group" data-toggle="buttons">
+            <label><input name="dcolor" id="dcolor" class="picker">&nbsp;Date</label>&nbsp;
+        
+            <label><input name="amcolor" id="amcolor" class="picker">&nbsp;AM/PM</label>&nbsp;
+        
+            <label><input name="hlcolor" id="hlcolor" class="picker">&nbsp;Lines</label>&nbsp;
+        </div><br />
+        <div class="btn-group" data-toggle="buttons">      
+
+            <label><input name="bicolor" id="bicolor" class="picker">&nbsp;Battery</label>
+        </div>
+        <hr />
+
+        <h4>Share your Theme</h4>
+        <p><small>If you've created a great theme. Send it to me and i'll include it in the presets.</small></p>
+        <div class="clearfix">
+          <input class="btn btn-info"  type="button" value="Submit your theme!" id="sharetheme" />
+        </div>
+        <hr />
+
+</div><!--end platform -->
+
+        <div class="clearfix">
+          <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
+        </div>
+      </form>
+    </div>
+
+    <div class="footer container">
+      <p>91 Dub v3.0 by <a href="http://twitter.com/orviwan">orviwan</a></p>
+        
+    <br />
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+    <script type="text/javascript" src="js/spectrum.js"></script>
+    <script type="text/javascript" src="js/gcolor.js"></script>
+    
+    <script>
+    // Something like this to get query variables.
+    function getQueryParam(variable, default_) {
+      var query = location.search.substring(1);
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (pair[0] == variable)
+              return decodeURIComponent(pair[1]);
+      }
+      return default_ || false;
+    }    
+    
+    $('#platform').hide();
+
+    var platform = getQueryParam('platform', '');
+    if(platform=='basalt') {
+      $('#platform').show();
+    }
+
+    var settings = {};
+
+    function updatePreview() {
+    return;
+
+      $("#pebblesim").css("backgroundColor", $("#bgcolor").spectrum("get").toHexString());
+      $("#pebblesim .timeshadow").css("color", $("#tscolor").spectrum("get").toHexString());
+      $("#pebblesim .time").css("color", $("#tcolor").spectrum("get").toHexString());
+      $("#pebblesim .ampm").css("color", $("#amcolor").spectrum("get").toHexString());
+      $("#pebblesim .date").css("color", $("#dcolor").spectrum("get").toHexString());
+      $("#pebblesim .line").css("borderColor", $("#hlcolor").spectrum("get").toHexString());
+      $("#pebblesim .battery").css("borderColor", $("#bicolor").spectrum("get").toHexString());
+      $("#pebblesim .batterypercent").css("color", $("#bicolor").spectrum("get").toHexString());
+      $("#pebblesim .fill").css("backgroundColor", $("#bicolor").spectrum("get").toHexString());
+    }
+
+    $('#sharetheme').on('click', function() {
+
+      return;
+
+      var body = $("#bgcolor").spectrum("get").toHexString().replace('#', '') + ',' +
+      $("#tscolor").spectrum("get").toHexString().replace('#', '') + ',' +
+      $("#tcolor").spectrum("get").toHexString().replace('#', '') + ',' +
+      $("#dcolor").spectrum("get").toHexString().replace('#', '') + ',' +
+      $("#amcolor").spectrum("get").toHexString().replace('#', '') + ',' +
+      $("#hlcolor").spectrum("get").toHexString().replace('#', '') + ',' +
+      $("#bicolor").spectrum("get").toHexString().replace('#', '');
+
+      window.open('mailto:orviwan@gmail.com?subject=Checkout%20my%2091 Dub%20theme&body=' + encodeURIComponent('Theme name: My Theme by My Name\nData: ' + body));
+    });
+
+      $('#presets').on('change', function() {
+
+        return;
+          
+        var colors = this.value.split(',');
+        $("#bgcolor").spectrum("set", '#' + colors[0]);
+        $("#tscolor").spectrum("set", '#' + colors[1]);
+        $("#tcolor").spectrum("set", '#' + colors[2]);
+        $("#dcolor").spectrum("set", '#' + colors[3]);
+        $("#amcolor").spectrum("set", '#' + colors[4]);
+        $("#hlcolor").spectrum("set", '#' + colors[5]);
+        $("#bicolor").spectrum("set", '#' + colors[6]);
+        updatePreview();
+      });
+        
+
+
+    
+      
+      $().ready(function () {
+
+        $(".picker").spectrum({
+            showPaletteOnly: true,
+            hideAfterPaletteSelect:true,
+            preferredFormat: "hex3",
+            change: function() {
+                updatePreview();
+            },
+            palette: [
+              [ '000', '005', '00a', '00f', '050', '055', '05a', '05f' ],
+              [ '500', '505', '50a', '50f', '550', '555', '55a', '55f' ],
+              [ 'a00', 'a05', 'a0a', 'a0f', 'a50', 'a55', 'a5a', 'a5f' ],
+              [ 'f00', 'f05', 'f0a', 'f0f', 'f50', 'f55', 'f5a', 'f5f' ],
+              [ '0a0', '0a5', '0aa', '0af', '0f0', '0f5', '0fa', '0ff' ],
+              [ '5a0', '5a5', '5aa', '5af', '5f0', '5f5', '5fa', '5ff' ],
+              [ 'aa0', 'aa5', 'aaa', 'aaf', 'af0', 'af5', 'afa', 'aff' ],
+              [ 'fa0', 'fa5', 'faa', 'faf', 'ff0', 'ff5', 'ffa', 'fff' ]
+            ]
+        });
+
+        try {
+          settings = JSON.parse(localStorage.getItem("settings"));
+        }
+        catch(err) {
+          settings = null;
+        }
+        
+
+        if(settings==null) {
+          settings = {};
+          settings.blink = 0;      
+          settings.invert = 0;
+          settings.bluetoothvibe = 1;
+          settings.hourlyvibe = 1;
+          settings.branding_mask = 0;
+          settings.battery_hide = 0;
+          settings.seconds = 0;
+
+          settings.bgcolor = GColor.fromHex("#000000");
+          settings.tscolor = GColor.fromHex("#FFFFFF");
+          settings.tcolor = GColor.fromHex("#000000");
+          settings.dcolor = GColor.fromHex("#000000");
+          settings.amcolor = GColor.fromHex("#000000");
+          settings.hlcolor = GColor.fromHex("#FFFFFF");
+          settings.bicolor = GColor.fromHex("#FFFFFF");
+        }
+        
+        if(settings.blink == 1) {
+          $('#blink1').prop('checked', true);
+          $('#blink1').parent().addClass('active');
+          
+          $('#blink2').prop('checked', false);
+          $('#blink2').parent().removeClass('active');
+          
+          $('#blink3').prop('checked', false);
+          $('#blink3').parent().removeClass('active');
+        } 
+        else if (settings.blink == 0) {
+          $('#blink1').prop('checked', false);
+          $('#blink1').parent().removeClass('active');
+          
+          $('#blink2').prop('checked', true);
+          $('#blink2').parent().addClass('active'); 
+          
+          $('#blink3').prop('checked', false);
+          $('#blink3').parent().removeClass('active'); 
+        }
+        else if (settings.blink == 2) {
+          $('#blink1').prop('checked', false);
+          $('#blink1').parent().removeClass('active');
+          
+          $('#blink2').prop('checked', false);
+          $('#blink2').parent().removeClass('active'); 
+          
+          $('#blink3').prop('checked', true);
+          $('#blink3').parent().addClass('active'); 
+        }
+        
+
+        if(settings.invert) {
+          $('#invert1').prop('checked', true);
+          $('#invert1').parent().addClass('active');
+          
+          $('#invert2').prop('checked', false);
+          $('#invert2').parent().removeClass('active');
+        } 
+        else {
+          $('#invert1').prop('checked', false);
+          $('#invert1').parent().removeClass('active');
+          
+          $('#invert2').prop('checked', true);
+          $('#invert2').parent().addClass('active'); 
+        }
+        
+        
+        if(settings.bluetoothvibe) {
+          $('#bluetoothvibe1').prop('checked', true);
+          $('#bluetoothvibe1').parent().addClass('active');
+          
+          $('#bluetoothvibe2').prop('checked', false);
+          $('#bluetoothvibe2').parent().removeClass('active');
+        } 
+        else {
+          $('#bluetoothvibe1').prop('checked', false);
+          $('#bluetoothvibe1').parent().removeClass('active');
+          
+          $('#bluetoothvibe2').prop('checked', true);
+          $('#bluetoothvibe2').parent().addClass('active'); 
+        }
+        
+        
+        if(settings.hourlyvibe) {
+          $('#hourlyvibe1').prop('checked', true);
+          $('#hourlyvibe1').parent().addClass('active');
+          
+          $('#hourlyvibe2').prop('checked', false);
+          $('#hourlyvibe2').parent().removeClass('active');
+        } 
+        else {
+          $('#hourlyvibe1').prop('checked', false);
+          $('#hourlyvibe1').parent().removeClass('active');
+          
+          $('#hourlyvibe2').prop('checked', true);
+          $('#hourlyvibe2').parent().addClass('active'); 
+        }
+    
+        if(settings.branding_mask) {
+          $('#branding_mask1').prop('checked', true);
+          $('#branding_mask1').parent().addClass('active');
+          
+          $('#branding_mask2').prop('checked', false);
+          $('#branding_mask2').parent().removeClass('active');
+        } 
+        else {
+          $('#branding_mask1').prop('checked', false);
+          $('#branding_mask1').parent().removeClass('active');
+          
+          $('#branding_mask2').prop('checked', true);
+          $('#branding_mask2').parent().addClass('active'); 
+        } 
+    
+        if(settings.battery_hide) {
+          $('#battery_hide1').prop('checked', true);
+          $('#battery_hide1').parent().addClass('active');
+          
+          $('#battery_hide2').prop('checked', false);
+          $('#battery_hide2').parent().removeClass('active');
+        } 
+        else {
+          $('#battery_hide1').prop('checked', false);
+          $('#battery_hide1').parent().removeClass('active');
+          
+          $('#battery_hide2').prop('checked', true);
+          $('#battery_hide2').parent().addClass('active'); 
+        } 
+    
+        if(settings.seconds) {
+          $('#seconds1').prop('checked', true);
+          $('#seconds1').parent().addClass('active');
+          
+          $('#seconds2').prop('checked', false);
+          $('#seconds2').parent().removeClass('active');
+        } 
+        else {
+          $('#seconds1').prop('checked', false);
+          $('#seconds1').parent().removeClass('active');
+          
+          $('#seconds2').prop('checked', true);
+          $('#seconds2').parent().addClass('active'); 
+        }
+
+
+
+        $("#bgcolor").spectrum("set", '#' + GColor.toHex(settings.bgcolor));
+        $("#tscolor").spectrum("set", '#' + GColor.toHex(settings.tscolor));
+        $("#tcolor").spectrum("set", '#' + GColor.toHex(settings.tcolor));
+        $("#dcolor").spectrum("set", '#' + GColor.toHex(settings.dcolor));
+        $("#amcolor").spectrum("set", '#' + GColor.toHex(settings.amcolor));
+        $("#hlcolor").spectrum("set", '#' + GColor.toHex(settings.hlcolor));
+        $("#bicolor").spectrum("set", '#' + GColor.toHex(settings.bicolor));
+
+
+        updatePreview();
+
+      });
+
+      $("#configure-form").submit(function(e) {  
+
+        settings.blink = parseInt($('input:radio[name=blink]:checked').val());
+        settings.invert = $('#invert1').prop('checked') ? 1 : 0;
+        settings.bluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
+        settings.hourlyvibe = $('#hourlyvibe1').prop('checked') ? 1 : 0;
+        settings.branding_mask = $('#branding_mask1').prop('checked') ? 1 : 0;
+        settings.battery_hide = $('#battery_hide1').prop('checked') ? 1 : 0;
+        settings.seconds = $('#seconds1').prop('checked') ? 1 : 0;
+        settings.bgcolor = parseInt(GColor.fromHex($("#bgcolor").spectrum("get").toHexString().substring(1)));
+        settings.tscolor = parseInt(GColor.fromHex($("#tscolor").spectrum("get").toHexString().substring(1)));
+        settings.tcolor = parseInt(GColor.fromHex($("#tcolor").spectrum("get").toHexString().substring(1)));
+        settings.dcolor = parseInt(GColor.fromHex($("#dcolor").spectrum("get").toHexString().substring(1)));
+        settings.amcolor = parseInt(GColor.fromHex($("#amcolor").spectrum("get").toHexString().substring(1)));
+        settings.hlcolor = parseInt(GColor.fromHex($("#hlcolor").spectrum("get").toHexString().substring(1)));
+        settings.bicolor = parseInt(GColor.fromHex($("#bicolor").spectrum("get").toHexString().substring(1)));
+
+
+        localStorage.setItem("settings", JSON.stringify(settings));
+
+        e.preventDefault();
+
+        var return_to = getQueryParam('return_to', 'pebblejs://close#');
+        document.location = return_to + encodeURIComponent(JSON.stringify(settings));
+
+        
+      });
+  </script>
+</body>
+</html>

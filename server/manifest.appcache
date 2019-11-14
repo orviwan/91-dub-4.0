@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# 28-03-2014 - v0.1
+index.html
+
+# Javascript
+js/bootstrap.min.js
+js/jquery.min.js
+js/spectrum.js
+js/gcolor.js
+
+# Stylesheets
+css/bootstrap.min.css
+css/bootstrap-theme.min.css
+css/spectrum.css
+css/pebblesim.css
+
+# Fonts
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.eot
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff
+fonts/DS-Digital-Bold.otf

@@ -1,0 +1,81 @@
+{
+    "appKeys": {
+        "battery_hide": 5,
+        "blink": 0,
+        "bluetoothvibe": 2,
+        "branding_mask": 4,
+        "hourlyvibe": 3,
+        "invert": 1,
+        "powersave": 7,
+        "ps_end": 9,
+        "ps_start": 8,
+        "seconds": 6,
+        "set1colors": 201,
+        "set2colors": 202,
+        "setcolors": 200,
+        "switchset": 10,
+        "switch_end": 12,
+        "switch_start": 11,
+        "health": 13
+    },
+    "capabilities": [
+        "configurable",
+        "health"
+    ],
+    "companyName": "Orviwan",
+    "longName": "91 Dub 4.0",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "characterRegex": "[:0-9]",
+                "file": "fonts/DS-Digital-Bold.ttf",
+                "name": "FONT_DIGITALE_71",
+                "type": "font"
+            },
+            {
+                "characterRegex": "[:0-9]",
+                "file": "fonts/DS-Digital-Bold.ttf",
+                "name": "FONT_DIGITALE_56",
+                "type": "font"
+            },
+            {
+                "characterRegex": "[:0-9A-Z ]",
+                "file": "fonts/DS-Digital-Bold.ttf",
+                "name": "FONT_DIGITALE_22",
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9 A-Za-z%.:, --/' ~]",
+                "file": "fonts/lucon.ttf",
+                "name": "FONT_LUCIDIA_10",
+                "type": "font"
+            },
+            {
+                "file": "images/logo2.png",
+                "name": "IMAGE_LOGO2",
+                "type": "png"
+            },
+            {
+                "file": "images/menu_icon_91w.png",
+                "menuIcon": true,
+                "name": "IMAGE_MENU_ICON",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "91 Dub 4.0",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk",
+        "diorite"
+    ],
+    "uuid": "0c3ca0ae-9067-4764-af92-bdcad1fb6084",
+    "versionCode": 1,
+    "versionLabel": "4.21",
+    "watchapp": {
+        "watchface": true
+    }
+}

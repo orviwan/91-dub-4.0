@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html> <!--manifest="manifest.appcache"-->
+<head>
+  <title>91 Dub v3.0 Config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/spectrum.css">
+  <link rel="stylesheet" type="text/css" href="css/pebblesim.css">
+</head>
+<body>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-62811138-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <div class="container">
+
+      <h2>91 Dub v3.0</h2>
+      <p>This version has been completely rewritten for Pebble Time. Unfortunately due to time constraints, I've not been able to implement all of the original functionality yet. Don't worry though, you can still download <a href="https://apps.getpebble.com/applications/554e08d40136b0e6e200001b" target="_blank">91 Dub v2.0</a>.</p>
+      
+      <form id="configure-form" class="form-configure well" action="#" method="POST">
+        <h4>Blink</h4>
+        <p><small>The colon between the hours and minutes will blink every second.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="blink" id="blink1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="blink" id="blink2" value="0"> No
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="blink" id="blink3" value="2"> Double Rate
+          </label>
+        </div>
+        <hr />
+        <div>
+          <h4>Invert</h4>
+          <p><small>Inverted colour scheme.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="invert" id="invert1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="invert" id="invert2" value="0"> No
+            </label>
+          </div>
+          <hr />
+        </div>
+        <h4>Bluetooth Vibe</h4>
+        <p><small>Vibrate on Bluetooth disconnect.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="bluetoothvibe" id="bluetoothvibe1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="bluetoothvibe" id="bluetoothvibe2" value="0"> No
+          </label>
+        </div>
+        <hr />
+        <h4>Hourly Vibe</h4>
+        <p><small>Vibrate on the hour.</small></p> 
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="hourlyvibe" id="hourlyvibe1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="hourlyvibe" id="hourlyvibe2" value="0"> No
+          </label>
+        </div>
+        <hr />
+        <div style="display:none">
+          <h4>Hide Branding</h4>
+          <p><small>Don't display 'Pebble Smartwatch' at the top of the watch face.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="branding_mask" id="branding_mask1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="branding_mask" id="branding_mask2" value="0"> No
+            </label>
+          </div>
+          <hr />
+        </div>
+        <div style="display:none">
+          <h4>Hide Battery Level</h4>
+          <p><small>Don't display the battery icon and percentage on the watch face.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="battery_hide" id="battery_hide1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="battery_hide" id="battery_hide2" value="0"> No
+            </label>
+          </div>
+          <hr />
+        </div>
+        <div style="display:none">
+          <h4>Show Seconds</h4>
+          <p><small>Reduce the size of the clock to display seconds.</small></p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="seconds" id="seconds1" value="1"> Yes
+            </label>
+            <label class="btn btn-primary">
+      
+              <input type="radio" name="seconds" id="seconds2" value="0"> No
+            </label>
+          </div>
+          <hr />  
+        </div>
+
+
+        <div id="platform">
+          <h3>Pebble Time</h3>
+          <!-- Presets -->
+
+          <h4>Preset Themes</h4>
+          <div>
+              <select id="presets" class="form-control"></select>
+          </div>
+          <hr />
+
+          <h4>Live Preview (simulated)</h4>
+          <div class="simwrap">
+            <div id="pebblesim">
+                <div class="branding"><strong>pebble</strong> smartwatch</div>
+
+                <div class="line"></div>
+                <div class="back"><span class="arrowleft">&ltrif;</span> LIGHT</div>
+                <div class="prev">PREV <span class="arrowright">&rtrif; </span></div>
+                <div class="boxouter">
+                  <div class="boxstroke"></div>
+                  <div class="boxinner"></div>
+                </div>
+
+                <svg width="10" height="10" class="bluetooth" >
+                 <g>
+                  <ellipse y="NaN" x="NaN" y2="NaN" x2="NaN" y1="NaN" x1="NaN" r="NaN" ry="5" rx="5" id="svg_2" cy="5" cx="5" stroke-linecap="null" stroke-linejoin="null" stroke-width="0"/>
+                 </g>
+                 <g>
+                  <g id="svg_7">
+                   <line y="NaN" x="NaN" id="svg_3" y2="8" x2="8" y1="2" x1="2" stroke-linecap="null" stroke-linejoin="null" fill="none"/>
+                   <line y="NaN" x="NaN" id="svg_4" y2="2" x2="8" y1="8" x1="2" stroke-linecap="null" stroke-linejoin="null" fill="none"/>
+                   <line y="NaN" x="NaN" id="svg_5" y2="8" x2="5" y1="1" x1="5" stroke-linecap="null" stroke-linejoin="null" fill="none"/>
+                   <line y="NaN" x="NaN" id="svg_6" y2="8" x2="8" y1="2" x1="8" stroke-linecap="null" stroke-linejoin="null" fill="none"/>
+                  </g>
+                 </g>
+                </svg>
+
+                <div class="timeshadow"><span>8</span><span>8</span><span class="sep">:</span><span>8</span><span>8</span></div>
+                <div class="time"><span>2</span><span>3</span><span class="sep">:</span><span>4</span><span>5</span></div>
+                <div class="ampm">24H</div>
+                <div class="date">WED 22</div>
+                <div class="batterypercent">80%</div>
+                <div class="battery"><div class="fill"></div></div>
+
+                <div class="next">NEXT <span class="arrowright">&rtrif;</span></div>
+                <div class="line line2"></div>
+                <span class="water">WATER</span>
+                <span class="resist">RESIST</span>
+
+                <svg class="wr_box" width="42" height="16">
+                  <path d="m1.2099,3.12781l1.50781,-2.13223l36.27459,0.00001l1.5069,2.13222l-0.0065,7.83829l-4.49977,4.15946l-30.26651,0l-4.51749,-4.15946l0.00097,-7.83829z" id="svg_2" stroke-linecap="null" stroke-linejoin="null"/>
+                </svg>
+
+                <svg class="wr" width="36" height="21"  preserveAspectRatio=" slice" viewBox="0 0 52.5 20">
+                <path
+                     id="path5023"
+                     d="m 4.8975614,16.25 -2.2027547,0 -0.774796,-4.6875 C 1.4938729,8.9843754 1.1390242,5.6093754 1.1314578,4.0625004 L 1.1177008,1.25 l 2.5,0 2.4999997,0 0.06441,4.6875004 L 6.2465205,10.625 8.1908035,5.9375004 10.135085,1.25 l 1.741308,0 1.741307,0 0.121474,4.6875004 L 13.860649,10.625 15.783794,5.9375004 17.70694,1.25 l 1.70538,0 c 0.937959,0 1.70538,0.2311965 1.70538,0.5137699 0,0.2825735 -1.203065,3.6575735 -2.673479,7.4999995 L 15.770744,16.25 l -2.326523,0 -2.326521,0 L 11.05329,11.5625 10.98888,6.8750004 9.0445985,11.5625 7.1003165,16.25 l -2.202754,0 z m 17.3708196,0 -2.59932,0 0.72432,-3.75 c 0.398375,-2.0625 1.056816,-5.4673386 1.463201,-7.5663076 l 0.738883,-3.8163078 5.071311,0.3788078 5.071313,0.3788076 1.26374,2.0175964 1.26374,2.017597 -1.009793,2.357403 C 33.700391,9.5641684 33.369876,11.890625 33.5213,13.4375 l 0.275314,2.8125 -2.443668,0 -2.443667,0 -0.686655,-2.62577 -0.686654,-2.625769 -1.334135,0.824541 C 25.468061,12.276499 24.8677,13.458095 24.8677,14.448771 l 0,1.801229 -2.599319,0 z m 5.724319,-8.7499996 1.875,0 0,-1.25 0,-1.25 -1.875,0 -1.875,0 0,1.25 0,1.25 1.875,0 z"
+                      />
+                </svg>
+                <div class="overlay"></div>
+            </div>
+          </div>
+          <hr />
+
+
+          <h4>Design a Theme</h4>
+
+          <div>
+
+              <label><input name="bg4color" id="bg4color" class="picker">&nbsp;Background</label><br />
+              <label><input name="d9color" id="d9color" class="picker">&nbsp;Branding Text</label><br />
+
+              <h5>Centre Panel</h5>
+              <label><input name="bg1color" id="bg1color" class="picker">&nbsp;Outer Border</label><br />
+              <label><input name="bg2color" id="bg2color" class="picker">&nbsp;Inner Border</label><br />
+              <label><input name="bg3color" id="bg3color" class="picker">&nbsp;Inner Panel</label><br />
+
+              <label><input name="t1color" id="t1color" class="picker">&nbsp;Date</label><br />
+              <label><input name="t2color" id="t2color" class="picker">&nbsp;AM/PM/24H</label><br />
+
+              <label><input name="t4color" id="t4color" class="picker">&nbsp;Time</label><br />
+              <label><input name="t3color" id="t3color" class="picker">&nbsp;Time Shadow</label><br />
+
+              <h5>Lines</h5>
+              <label><input name="d1color" id="d1color" class="picker">&nbsp;Line Top</label><br />
+              <label><input name="d2color" id="d2color" class="picker">&nbsp;Line Bottom</label><br />
+
+              <h5>Water Resist</h5>
+              <label><input name="d3color" id="d3color" class="picker">&nbsp;Box Border</label><br />
+              <label><input name="d4color" id="d4color" class="picker">&nbsp;Box Fill</label><br />
+              <label><input name="d5color" id="d5color" class="picker">&nbsp;WR Letters</label><br />
+              <label><input name="d6color" id="d6color" class="picker">&nbsp;Water Resist Text</label><br />
+
+              <h5>Buttons</h5>
+              <label><input name="d7color" id="d7color" class="picker">&nbsp;Button Labels</label><br />
+              <label><input name="d8color" id="d8color" class="picker">&nbsp;Button Arrows</label><br />
+              
+    
+              <h5>Battery</h5>
+              <label><input name="bi1color" id="bi1color" class="picker">&nbsp;Battery</label><br />
+              <label><input name="bi2color" id="bi2color" class="picker">&nbsp;Battery Warning</label><br />
+              <label><input name="bi3color" id="bi3color" class="picker">&nbsp;Battery Critical</label><br />
+              <label><input name="bi4color" id="bi4color" class="picker">&nbsp;Battery Charging</label><br />
+
+              <h5>Bluetooth</h5>
+              <label><input name="bl1color" id="bl1color" class="picker">&nbsp;Circle Connected</label><br />
+              <label><input name="bl2color" id="bl2color" class="picker">&nbsp;Icon Connected</label><br />
+              <label><input name="bl3color" id="bl3color" class="picker">&nbsp;Circle Disconnected</label><br />
+              <label><input name="bl4color" id="bl4color" class="picker">&nbsp;Icon Disconnected</label><br />
+
+              <a href="#pebblesim" class="btn btn-info">Preview Theme</a>
+          </div>
+          <hr />
+
+          <h4>Share your Theme</h4>
+          <p><small>If you've created a great theme. Send it to me and i'll include it in the presets, or send it to a friend.</small></p>
+          <div class="clearfix">
+            <input class="btn btn-info"  type="button" value="Submit your theme!" id="sharetheme" />&nbsp;
+            <input class="btn btn-warning" type="button" value="Copy/Paste Theme" id="advancedshare" />
+
+            <div id="share" style="display:none;">
+                <br />
+                <p>Copy your current settings and send to a friend, or paste new settings here and then click 'Apply Settings'.</p>
+                <textarea id="advshare" class="form-control" rows="5"></textarea><br />
+                <input class="btn btn-danger pull-right" type="button" value="Apply Settings" id="advancedload" />
+            </div>
+          </div>
+          <hr />
+
+        </div><!--end platform -->
+
+        <div class="clearfix">
+          <input class="btn btn-info hide"  type="button" value="save 2nd theme" id="theme2" />&nbsp;
+          <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
+        </div>
+      </form>
+      <hr />
+
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="form-configure well" >
+        <input type="hidden" name="cmd" value="_s-xclick" />
+        <input type="hidden" name="hosted_button_id" value="93YLEYE2PW2TS" />
+        <input type="hidden" name="on0" value="Gift" />
+        <h4>Donate</h4>
+        <p>I do this for love, but sometimes we all need a bit of encouragement (and bacon).</p>
+        <select name="os0"  class="form-control">
+          <option value="Thanks">2 rashers of bacon &pound;0.50 GBP</option>
+          <option value="Much love">Bacon sandwich &pound;1.00 GBP</option>
+          <option value="OMG">Full English breakfast &pound;5.00 GBP</option>
+        </select><br />
+
+        <input type="hidden" name="currency_code" value="GBP" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online." />
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+      </form>
+
+    </div>
+
+
+    <div class="footer container">
+      <p>91 Dub v3.0 by <a href="http://twitter.com/orviwan">orviwan</a></p>
+      <br />
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+    <script type="text/javascript" src="js/spectrum.js"></script>
+    <script type="text/javascript" src="js/gcolor.js"></script>
+    
+    <script>
+    (function( $ ){
+        $.fn.serializeJSON=function() {
+            var json = {};
+            jQuery.map($(this).serializeArray(), function(n, i){
+                json[n['name']] = $('#'+n['name']).spectrum("get").toHexString();
+            });
+            return json;
+        };
+    })( jQuery );
+
+    // Something like this to get query variables.
+    function getQueryParam(variable, default_) {
+      var query = location.search.substring(1);
+      var vars = query.split('&');
+      for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+          if (pair[0] == variable)
+              return decodeURIComponent(pair[1]);
+      }
+      return default_ || false;
+    }    
+
+    function getThemes() {   
+        $.get( "themes.json",{ "_": $.now() }, function( data ) {
+          var sel = $("#presets");
+          sel.empty();
+          sel.append('<option></option>');
+          for (var i=0; i<data.length; i++) {
+            sel.append('<option value="' + encodeURIComponent(JSON.stringify(data[i])) + '">' + data[i].theme[0].name + '</option>');
+          }
+        });  
+    }
+    
+    $('#platform').hide();
+
+    var platform = getQueryParam('platform', '');
+    if(platform=='basalt') {
+      $('#platform').show();
+    }
+
+    var settings = {};
+	
+    var defaultcolors="FFC0FFC0C0C0C0C0FFC0FFFFFFFFFFC0FFFFFFFFFFC0C0FFC0";
+
+  	var colorsEnum = {
+  		"bg1": 0, "bg2": 1, "bg3": 2, "bg4": 3, //background
+  		"bi1": 4, "bi2": 5, "bi3": 6, "bi4": 7, //battery
+  		"bl1": 8, "bl2": 9, "bl3": 10, "bl4": 11, //bluetooth	
+  		"d1": 12, "d2": 13, "d3": 14, "d4": 15, "d5": 16, "d6": 17, "d7": 18, "d8": 19, "d9": 20, //decorations
+  		"t1": 21, "t2": 22, "t3": 23, "t4": 24, //time digits
+  	};
+	
+    function updatePreview() {
+
+      /*
+      BACKGROUND
+      bg1 Centre Panel Outer Stroke
+      bg2 Centre Panel Stroke
+      bg3 Centre Panel
+      bg4 Background Color
+      */
+      $("#pebblesim .boxouter").css("backgroundColor", $("#bg1color").spectrum("get").toHexString());
+      $("#pebblesim .boxstroke").css("backgroundColor", $("#bg2color").spectrum("get").toHexString());
+      $("#pebblesim .boxinner").css("backgroundColor", $("#bg3color").spectrum("get").toHexString());
+      $("#pebblesim").css("backgroundColor", $("#bg4color").spectrum("get").toHexString());
+
+      /*
+      TIME
+      t1  Date
+      t2  AM/PM/24H Indicator
+      t3  Clock Shadow
+      t4  Clock
+      */
+      $("#pebblesim .date").css("color", $("#t1color").spectrum("get").toHexString());
+      $("#pebblesim .ampm").css("color", $("#t2color").spectrum("get").toHexString());
+      $("#pebblesim .timeshadow").css("color", $("#t3color").spectrum("get").toHexString());
+      $("#pebblesim .time").css("color", $("#t4color").spectrum("get").toHexString());
+
+      /*
+      DECORATIONS
+      d1  Horizontal Line Top
+      d2  Horizontal Line Bottom
+      d3  Water Resist Box Stroke
+      d4  Water Resist Box Fill
+      d5  WR Letters
+      d6  Water Resist Text
+      d7  Button Labels
+      d8  Button Icons
+      d9  Branding Text
+      */
+      $("#pebblesim .line").css("borderColor", $("#d1color").spectrum("get").toHexString());
+      $("#pebblesim .line2").css("borderColor", $("#d2color").spectrum("get").toHexString());
+      $('div#pebblesim .wr_box path').css("stroke", $("#d3color").spectrum("get").toHexString());
+      $('div#pebblesim .wr_box path').css("fill", $("#d4color").spectrum("get").toHexString());
+      $("#pebblesim .wr path").css("fill", $("#d5color").spectrum("get").toHexString());
+      $("#pebblesim .water, #pebblesim .resist").css("color", $("#d6color").spectrum("get").toHexString());
+      $("#pebblesim .next, #pebblesim .prev, #pebblesim .back").css("color", $("#d7color").spectrum("get").toHexString());
+      $("#pebblesim .arrowleft, #pebblesim .arrowright").css("color", $("#d8color").spectrum("get").toHexString());
+      $("#pebblesim .branding").css("color", $("#d9color").spectrum("get").toHexString());
+
+      /*
+      BATTERY
+      bi1 Battery Indicator
+      bi2 Battery Indicator Warning
+      bi3 Battery Indicator Critical
+      bi4 Battery Charging
+      */
+      $("#pebblesim .battery").css("borderColor", $("#bi1color").spectrum("get").toHexString());
+      $("#pebblesim .batterypercent").css("color", $("#bi1color").spectrum("get").toHexString());
+      $("#pebblesim .fill").css("backgroundColor", $("#bi1color").spectrum("get").toHexString());
+
+      /*
+      BLUETOOTH
+      bl1 Bluetooth Circle Connected
+      bl2 Bluetooth Icon Connected
+      bl3 Bluetooth Circle Disconnected
+      bl4 Bluetooth Icon Disconnected
+      */
+      $("#pebblesim .bluetooth ellipse").css("fill", $("#bl1color").spectrum("get").toHexString());
+      $("#pebblesim .bluetooth line").css("stroke", $("#bl2color").spectrum("get").toHexString());
+
+      var obj = {"theme": [$('#configure-form .picker').serializeJSON() ]};
+      $('#advshare').html(JSON.stringify(obj));
+
+    }
+
+    $('#sharetheme').on('click', function() {
+      var obj = {"theme": [$('#configure-form .picker').serializeJSON() ]};
+      window.open('mailto:orviwan@gmail.com?subject=New%2091%20Dub%20v3.0%20theme&body=' + encodeURIComponent('Theme name: ????\n\n' + JSON.stringify(obj)));
+
+    });
+
+    $('#advancedshare').on('click', function() {
+      $('#share').toggle();
+    });
+
+    $('#advancedload').on('click', function() {
+      try {
+        var newsettings = JSON.parse($('#advshare').val());
+        $.each(newsettings.theme[0], function(key,value){
+            $('#' + key).spectrum("set", value);
+        });
+        updatePreview();
+      }
+      catch(ex) {
+        alert('failed to load settings');
+      }
+    });
+
+    $('#presets').on('change', function() {
+      var newsettings = JSON.parse(decodeURIComponent(this.value));
+      $.each(newsettings.theme[0], function(key,value){
+          $('#' + key).spectrum("set", value);
+      });
+      updatePreview();
+    });
+
+    $("textarea#advshare").on("click", function () {
+       $(this).select();
+    });
+
+    $('#theme2').on('click', function() {
+        if(platform=='basalt') {
+          settings.set2colors = "";
+          Object.keys(colorsEnum).forEach(function(x) {settings.set2colors += 
+            GColor.shortHex($('#'+x+'color').spectrum('get').toHexString().substring(1));
+          });
+    	   }
+    });	  
+
+    function updateDate() {
+      var currentdate = new Date();
+      var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      var formattedDate = days[currentdate.getDay()] + ' ' + addZero(currentdate.getDate());
+      
+      $('.date').text(formattedDate);
+    }
+
+    function addZero(i) {
+      if (i < 10) {
+          i = "0" + i;
+      }
+      return i;
+    }
+
+    function updateClock() {
+      var currentdate = new Date();
+
+      //why am I bothering to do this?
+      if(currentdate.getHours()==0 && currentdate.getMinutes()==0) {
+        updateDate();
+      }
+      var hours = addZero(currentdate.getHours());
+      var mins = addZero(currentdate.getMinutes());
+
+      $("#pebblesim .time span").each(function(index,value) {
+        switch(index) {
+          case 0:
+            value.innerHTML = hours.toString().charAt(0);
+            break;
+          case 1:
+            value.innerHTML = hours.toString().charAt(1);
+            break;
+          case 3:
+            value.innerHTML = mins.toString().charAt(0);
+            break;
+          case 4:
+            value.innerHTML = mins.toString().charAt(1);
+            break;
+        }
+      });
+    };
+
+    setInterval(updateClock, 5000);
+
+  
+    
+    $().ready(function () {
+
+      updateClock();
+      updateDate();
+      getThemes();
+
+      $(".picker").spectrum({
+          showPaletteOnly: true,
+          hideAfterPaletteSelect:true,
+          preferredFormat: "hex3",
+          change: function() {
+              updatePreview();
+          },
+          palette: [
+            [ '000', '005', '00a', '00f', '050', '055', '05a', '05f' ],
+            [ '500', '505', '50a', '50f', '550', '555', '55a', '55f' ],
+            [ 'a00', 'a05', 'a0a', 'a0f', 'a50', 'a55', 'a5a', 'a5f' ],
+            [ 'f00', 'f05', 'f0a', 'f0f', 'f50', 'f55', 'f5a', 'f5f' ],
+            [ '0a0', '0a5', '0aa', '0af', '0f0', '0f5', '0fa', '0ff' ],
+            [ '5a0', '5a5', '5aa', '5af', '5f0', '5f5', '5fa', '5ff' ],
+            [ 'aa0', 'aa5', 'aaa', 'aaf', 'af0', 'af5', 'afa', 'aff' ],
+            [ 'fa0', 'fa5', 'faa', 'faf', 'ff0', 'ff5', 'ffa', 'fff' ]
+          ]
+      });
+
+      try { //give priority to optional settings in URL 
+        settings = JSON.parse(getQueryParam('settings', ''));
+      }
+      catch(err) {
+        settings = null;
+      }
+      
+      if ((settings==null) || Object.keys(settings).length==0) {
+        try {
+          settings = JSON.parse(localStorage.getItem("settings"));
+        }
+        catch(err) {
+          settings = null;
+        }     
+      }
+
+      
+
+      if((settings==null) || Object.keys(settings).length==0) {
+        settings = {};
+
+        settings.blink = 0;      
+        settings.invert = 0;
+        settings.bluetoothvibe = 1;
+        settings.hourlyvibe = 1;
+        settings.branding_mask = 0;
+        settings.battery_hide = 0;
+        settings.seconds = 0;
+	      settings.setcolors = defaultcolors;
+      }
+      
+      if(settings.blink == 1) {
+        $('#blink1').prop('checked', true);
+        $('#blink1').parent().addClass('active');
+        
+        $('#blink2').prop('checked', false);
+        $('#blink2').parent().removeClass('active');
+        
+        $('#blink3').prop('checked', false);
+        $('#blink3').parent().removeClass('active');
+      } 
+      else if (settings.blink == 0) {
+        $('#blink1').prop('checked', false);
+        $('#blink1').parent().removeClass('active');
+        
+        $('#blink2').prop('checked', true);
+        $('#blink2').parent().addClass('active'); 
+        
+        $('#blink3').prop('checked', false);
+        $('#blink3').parent().removeClass('active'); 
+      }
+      else if (settings.blink == 2) {
+        $('#blink1').prop('checked', false);
+        $('#blink1').parent().removeClass('active');
+        
+        $('#blink2').prop('checked', false);
+        $('#blink2').parent().removeClass('active'); 
+        
+        $('#blink3').prop('checked', true);
+        $('#blink3').parent().addClass('active'); 
+      }
+      
+
+      if(settings.invert) {
+        $('#invert1').prop('checked', true);
+        $('#invert1').parent().addClass('active');
+        
+        $('#invert2').prop('checked', false);
+        $('#invert2').parent().removeClass('active');
+      } 
+      else {
+        $('#invert1').prop('checked', false);
+        $('#invert1').parent().removeClass('active');
+        
+        $('#invert2').prop('checked', true);
+        $('#invert2').parent().addClass('active'); 
+      }
+      
+      
+      if(settings.bluetoothvibe) {
+        $('#bluetoothvibe1').prop('checked', true);
+        $('#bluetoothvibe1').parent().addClass('active');
+        
+        $('#bluetoothvibe2').prop('checked', false);
+        $('#bluetoothvibe2').parent().removeClass('active');
+      } 
+      else {
+        $('#bluetoothvibe1').prop('checked', false);
+        $('#bluetoothvibe1').parent().removeClass('active');
+        
+        $('#bluetoothvibe2').prop('checked', true);
+        $('#bluetoothvibe2').parent().addClass('active'); 
+      }
+      
+      
+      if(settings.hourlyvibe) {
+        $('#hourlyvibe1').prop('checked', true);
+        $('#hourlyvibe1').parent().addClass('active');
+        
+        $('#hourlyvibe2').prop('checked', false);
+        $('#hourlyvibe2').parent().removeClass('active');
+      } 
+      else {
+        $('#hourlyvibe1').prop('checked', false);
+        $('#hourlyvibe1').parent().removeClass('active');
+        
+        $('#hourlyvibe2').prop('checked', true);
+        $('#hourlyvibe2').parent().addClass('active'); 
+      }
+  
+      if(settings.branding_mask) {
+        $('#branding_mask1').prop('checked', true);
+        $('#branding_mask1').parent().addClass('active');
+        
+        $('#branding_mask2').prop('checked', false);
+        $('#branding_mask2').parent().removeClass('active');
+      } 
+      else {
+        $('#branding_mask1').prop('checked', false);
+        $('#branding_mask1').parent().removeClass('active');
+        
+        $('#branding_mask2').prop('checked', true);
+        $('#branding_mask2').parent().addClass('active'); 
+      } 
+  
+      if(settings.battery_hide) {
+        $('#battery_hide1').prop('checked', true);
+        $('#battery_hide1').parent().addClass('active');
+        
+        $('#battery_hide2').prop('checked', false);
+        $('#battery_hide2').parent().removeClass('active');
+      } 
+      else {
+        $('#battery_hide1').prop('checked', false);
+        $('#battery_hide1').parent().removeClass('active');
+        
+        $('#battery_hide2').prop('checked', true);
+        $('#battery_hide2').parent().addClass('active'); 
+      } 
+  
+      if(settings.seconds) {
+        $('#seconds1').prop('checked', true);
+        $('#seconds1').parent().addClass('active');
+        
+        $('#seconds2').prop('checked', false);
+        $('#seconds2').parent().removeClass('active');
+      } 
+      else {
+        $('#seconds1').prop('checked', false);
+        $('#seconds1').parent().removeClass('active');
+        
+        $('#seconds2').prop('checked', true);
+        $('#seconds2').parent().addClass('active'); 
+      }
+
+		  var colstring = defaultcolors; //default BW colors
+		
+		  if(platform=='basalt') {
+        if (settings.setcolors) {
+          colstring= settings.setcolors;
+        }
+    		//else {
+    			 //colstring= "FFC0FFC0C0C0C0C0FFC0FFFFFFFFFFC0FFFFFFFFFFC0C0FFC0"; //optional color default
+        //}
+
+  		  var counter=0;
+    		Object.keys(colorsEnum).forEach(function(x) {
+    			$('#'+x+'color').spectrum("set", '#' + GColor.expandHex(colstring.substr(counter * 2, 2)));
+    			counter++;
+  		  });		
+
+        updatePreview();
+      }
+
+    });  //ready
+
+    $("#configure-form").submit(function(e) {  
+
+      e.preventDefault();
+
+      settings.blink = parseInt($('input:radio[name=blink]:checked').val());
+      settings.invert = $('#invert1').prop('checked') ? 1 : 0;
+      settings.bluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
+      settings.hourlyvibe = $('#hourlyvibe1').prop('checked') ? 1 : 0;
+      settings.branding_mask = $('#branding_mask1').prop('checked') ? 1 : 0;
+      settings.battery_hide = $('#battery_hide1').prop('checked') ? 1 : 0;
+      settings.seconds = $('#seconds1').prop('checked') ? 1 : 0;
+
+      if(platform=='basalt') {
+  			settings.setcolors = "";
+  			Object.keys(colorsEnum).forEach(function(x) {settings.setcolors += 
+				GColor.shortHex($('#'+x+'color').spectrum('get').toHexString().substring(1));});
+
+      }
+
+      localStorage.setItem("settings", JSON.stringify(settings));
+
+      var return_to = getQueryParam('return_to', 'pebblejs://close#');
+      document.location = return_to + encodeURIComponent(JSON.stringify(settings));
+
+      
+    });
+  </script>
+</body>
+</html>
